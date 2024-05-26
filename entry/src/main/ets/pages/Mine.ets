@@ -1,5 +1,5 @@
 import MineModel, { LoginSourceData } from '../model/homeModel'
-import { promptAction, router } from '@kit.ArkUI';
+import { router } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -67,6 +67,15 @@ export default struct Setting {
         .backgroundColor(Color.White)
         .padding({ left: 24 })
         .borderRadius(16)
+
+        Stack() {
+          TextInput({ placeholder: '搜索设置项' }).backgroundColor('#fff').height(40).onChange((value) => {
+            console.log(`${value}`)
+          })
+          Row() {
+            Image($r('app.media.searchIcon')).height(20).width(20)
+          }.justifyContent(FlexAlign.End).width('100%').padding({ right: 24 })
+        }.margin({ bottom: 10 })
 
         List() {
           ForEach(MineModel.MineSettingsListData, (item: LoginSourceData) => {

@@ -5,7 +5,6 @@ import Mine from './Mine'
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
   @State currentIndex: number = 0;
   private tabsController: TabsController = new TabsController();
 
@@ -17,7 +16,7 @@ struct Index {
         .height(25)
       Text(TabData.title).margin({ top: 4 })
         .fontSize(10)
-        .fontColor(this.currentIndex === TabData.index ? '#1698CE' : '6B6B6B')
+        .fontColor(this.currentIndex === TabData.index ? '#1698CE' : '#6B6B6B')
     }.height(56)
     .width('100%')
     .justifyContent(FlexAlign.Center)
@@ -35,7 +34,7 @@ struct Index {
     }) {
       ForEach(firstPageTabs, (item: TabCls) => {
         TabContent() {
-          if (item.index === 1) {
+          if (item.index === 0) {
             Home()
           } else {
             Mine()

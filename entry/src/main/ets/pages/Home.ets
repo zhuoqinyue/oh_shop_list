@@ -1,4 +1,5 @@
 import HomeModel, { LoginSourceData } from '../model/homeModel'
+import { router } from '@kit.ArkUI';
 
 
 @Component
@@ -34,6 +35,7 @@ struct Home {
                 Image(item.img)
                   .width(30)
                   .height(30)
+
                 Text(item.title)
                   .fontSize(14)
                   .margin({ top: 12 })
@@ -48,6 +50,11 @@ struct Home {
         .height(88)
         .backgroundColor(Color.White)
         .borderRadius(24)
+        .onClick(() => {
+
+            router.replaceUrl({ url: 'pages/TaskMan' });
+
+        })
 
         Text('热点')
           .fontSize(16)
