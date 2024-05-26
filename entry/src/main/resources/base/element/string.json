@@ -1,0 +1,58 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "pet_Info",
+      "value": "萌宠数据"
+    },
+    {
+      "name": "pet_medical",
+      "value": "健康情况"
+    },
+    {
+      "name": "pet_face",
+      "value": "美容理发"
+    },
+    {
+      "name": "pet_food",
+      "value": "喂养数据"
+    },
+
+
+    {
+      "name": "setting_list_news",
+      "value": "推送通知"
+    },
+    {
+      "name": "setting_list_data",
+      "value": "数据管理"
+    },
+    {
+      "name": "setting_list_menu",
+      "value": "菜单设置"
+    },
+    {
+      "name": "setting_list_about",
+      "value": "关于我们"
+    },
+    {
+      "name": "setting_list_storage",
+      "value": "清除缓存"
+    },
+    {
+      "name": "setting_list_privacy",
+      "value": "隐私协议"
+    },
+    {
+      "name": "setting_toggle",
+      "value": "开关"
+    }
+  ]
+}
