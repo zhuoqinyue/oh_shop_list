@@ -1,8 +1,13 @@
+import TaskMan from '../model/taskManModel'
 import AddTaskModal from '../view/taskManView/addTaskModal'
 
 @Entry
 @Component
-export default struct TaskMan {
+export default struct TaskManPage {
+  @State tasks: TaskMan[] = [];
+  @State lastUpdateTime: string = '';
+  @State total: number = 0 //任务数
+  @State finish: number = 0 //完成数
   dialogController = new CustomDialogController({
     builder: AddTaskModal({
       onConfirm: (value): void => console.log(value)
@@ -30,9 +35,65 @@ export default struct TaskMan {
       })
   }
 
+  @Builder
+  allProgressBar() {
+    Row() {
+      Column() {
+        Text('总进度')
+          .fontSize($r('sys.float.ohos_id_text_size_sub_title1'))
+          .fontWeight(FontWeight.Bold)
+        Row() {
+          Text('最近更新：')
+          // .subTextStyle()
+          Text(this.lastUpdateTime)
+          // .subTextStyle()
+        }
+      }
+
+      Blank()
+
+      Stack() {
+        Row() {
+          Text(this.finish.toString())
+            .fontSize($r('sys.float.ohos_id_text_size_sub_title3'))
+          Text("/" + this.total.toString())
+            .fontSize($r('sys.float.ohos_id_text_size_sub_title3'))
+        }
+
+        Progress({
+          value: this.finish,
+          total: this.total,
+          type: ProgressType.Ring
+        }).width(50)
+      }
+    }
+  }
+
+  @Builder
+  overViewCard() {
+    Row() {
+      Image($r("app.media.loginCat"))
+        .width(96).height(96)
+        .objectFit(ImageFit.Fill)
+      Column() {
+        Text('2024开发任务')
+          .fontSize($r('sys.float.ohos_id_text_size_dialog_tittle'))
+          .fontWeight(FontWeight.Bolder)
+        Text('高质量完成交付')
+          .fontColor($r('sys.color.ohos_id_color_text_secondary'))
+          .fontSize($r('sys.float.ohos_id_text_size_sub_title1'))
+      }
+      .margin({ left: 20 })
+      .alignItems(HorizontalAlign.Start)
+    }.backgroundColor('#fff')
+    .width('100%').borderRadius(24).padding(20)
+  }
+
   build() {
     Column() {
       this.titleBar()
+      this.overViewCard()
+      this.allProgressBar()
 
       Blank()
 
@@ -40,8 +101,10 @@ export default struct TaskMan {
         .bottomButtonStyle('#007dff')
         .onClick(() => this.dialogController.open())
 
-    }.height('100%')
-    .width('100%').backgroundColor('#f1f3f5')
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor('#f1f3f5')
   }
 }
 

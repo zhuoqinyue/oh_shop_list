@@ -1,7 +1,7 @@
 import HomeModel, { LoginSourceData } from '../model/homeModel'
 import { router } from '@kit.ArkUI';
 
-
+@Entry
 @Component
 struct Home {
   private swiperController: SwiperController = new SwiperController();
@@ -39,7 +39,12 @@ struct Home {
                 Text(item.title)
                   .fontSize(14)
                   .margin({ top: 12 })
-              }
+              }.onClick(() => {
+                console.log(JSON.stringify(item.title))
+                if (item.title === '健康情况') {
+                  router.replaceUrl({ url: 'pages/TaskMan' });
+                }
+              })
             }
           }, (item: LoginSourceData) => JSON.stringify(item))
         }
@@ -50,11 +55,12 @@ struct Home {
         .height(88)
         .backgroundColor(Color.White)
         .borderRadius(24)
-        .onClick(() => {
 
-            router.replaceUrl({ url: 'pages/TaskMan' });
-
-        })
+        // .onClick(() => {
+        //
+        //     router.replaceUrl({ url: 'pages/TaskMan' });
+        //
+        // })
 
         Text('热点')
           .fontSize(16)
